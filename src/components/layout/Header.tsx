@@ -12,10 +12,14 @@ const Nav = () => {
 
   return (
     <div className="fixed w-full top-0 left-0 z-30">
-      <nav className="max-w-screen-xxl mx-auto min-h-20 flex items-center justify-between px-4 lg:px-[70px] py-[10px] overflow-hidden border-b border-black-500 backdrop-blur-xl">
+      <nav className="max-w-screen-xxl mx-auto min-h-20 flex items-center justify-between px-4 lg:px-[70px] py-[10px] overflow-hidden border-b border-black-500 backdrop-blur-2xl">
         <div id="logo">
           <Link href="/">
-            <Image src={logo} alt="logo" className=" w-[180px]" />
+            <Image
+              src={logo}
+              alt="logo"
+              className=" w-[180px] dark:filter dark:invert"
+            />
           </Link>
         </div>
         <div
@@ -30,25 +34,25 @@ const Nav = () => {
                 pathname === path ? "font-bold" : ""
               }`} // Highlight active link
             >
-              <>
-                {pathname === path && ( // Check if the link is active
-                  <span
-                    className="inline-block w-1.5 h-1.5 bg-lime-600 rounded-full"
-                    style={{
-                      boxShadow: "0 0 0.5em #00ff19",
-                    }}
-                  ></span>
-                )}
-                {name}
-              </>
+              {pathname === path && ( // Check if the link is active
+                <span
+                  className="inline-block w-1.5 h-1.5 bg-lime-600 rounded-full"
+                  style={{
+                    boxShadow: "0 0 0.5em #00ff19",
+                  }}
+                ></span>
+              )}
+              {name}
             </Link>
           ))}
         </div>
-        <Link href={"/dashboard"}>
-          <Button title="Login" />
-        </Link>
-        <UserButton />
-        <ModeToggle />
+        <div className="flex gap-2 justify-center items-center">
+          <Link href={"/agency"}>
+            <Button title="Login Kro" />
+          </Link>
+          <UserButton />
+          <ModeToggle />
+        </div>
       </nav>
     </div>
   );
